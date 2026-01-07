@@ -53,6 +53,8 @@ class AuthenticatedMovieApiTets(TestCase):
         self.client.force_authenticate(self.user)
 
     def test_get_movie_list(self):
+        sample_movie(title="Movie 1")
+        sample_movie(title="Movie 2")
         response = self.client.get(MOVIE_URL)
 
         items = Movie.objects.all().order_by("id")  # get a list of data from db
